@@ -32,16 +32,29 @@ return {
         lang = "python3"
     },
     lazy = false,
-  }
+  },
 
+  -- Markdown plugin 
+  {
+    "iamcco/markdown-preview.nvim",
+    build = function()
+      vim.fn.system({ "yarn", "install" })
+      vim.fn.system({ "yarn", "build" })
+    end,
+    init = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+    end,
+    ft = { "markdown" },
+    lazy = false,
+  },
 
-  -- {
-  -- 	"nvim-treesitter/nvim-treesitter",
-  -- 	opts = {
-  -- 		ensure_installed = {
-  -- 			"vim", "lua", "vimdoc",
-  --      "html", "css"
-  -- 		},
-  -- 	},
-  -- },
+  {
+  	"nvim-treesitter/nvim-treesitter",
+  	opts = {
+  		ensure_installed = {
+  			"vim", "lua", "vimdoc",
+       "html", "css"
+  		},
+  	},
+  },
 }
