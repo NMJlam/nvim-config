@@ -10,7 +10,7 @@ M.base46 = {
 
 -- M.nvdash = { load_on_startup = true }
 M.ui = {
-   telescope = { style = "borderless" }, -- borderless / bordered
+   telescope = { style = "bordered" }, -- borderless / bordered
 }
 
 return M
