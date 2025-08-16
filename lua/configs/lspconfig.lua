@@ -1,7 +1,21 @@
+
 require("nvchad.configs.lspconfig").defaults()
 
-local servers = { "html", "cssls", "pyright", "gopls"}
--- Add lsp from mason to make them load 
+local servers = {
+  "gopls",
+  "ruff",
+  "cssls",
+  "eslint",
+  "html",
+  "lua_ls",
+  "pyright",
+  "rust_analyzer",
+  "tailwindcss",
+  "ts_ls"
+}
 vim.lsp.enable(servers)
 
--- read :h vim.lsp.config for changing options of lsp servers 
+-- EXAMPLE
+require('mason-lspconfig').setup({
+    ensure_installed = servers, -- Add your desired servers here
+})
