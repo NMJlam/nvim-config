@@ -15,10 +15,10 @@ return {
   },
 
   {
-      "neovim/nvim-lspconfig",
-      config = function()
-          require "configs.lspconfig"
-      end,
+    "neovim/nvim-lspconfig",
+    config = function()
+      require "configs.lspconfig"
+    end,
     dependencies = {
       "mason-org/mason.nvim",
       "mason-org/mason-lspconfig.nvim",

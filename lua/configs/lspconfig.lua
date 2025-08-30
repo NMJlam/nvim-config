@@ -11,7 +11,8 @@ local servers = {
   "pyright",
   "rust_analyzer",
   "tailwindcss",
-  "ts_ls"
+  "ts_ls",
+  "hls",
 }
 vim.lsp.enable(servers)
 
@@ -19,3 +20,6 @@ vim.lsp.enable(servers)
 require('mason-lspconfig').setup({
     ensure_installed = servers, -- Add your desired servers here
 })
+
+-- In your configs/lspconfig.lua - add this AFTER your existing setup
+-- require('lspconfig').jdtls.setup({}) NOTE: nvim-java does not work with mason 2.0
