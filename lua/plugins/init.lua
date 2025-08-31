@@ -167,7 +167,7 @@ return {
       -- Custom buttons with dev icons from nvim-web-devicons
       dashboard.section.buttons.val = {
         dashboard.button("e", devicons.get_icon("file", "txt") .. "  New file", ":ene <BAR> startinsert <CR>"),
-        dashboard.button("ctrl p", devicons.get_icon("git", "git") .. "  Find git files", ":Telescope git_files <CR>"),
+        dashboard.button("ctrl p", "⚡ Find git files", ":Telescope git_files <CR>"),
         dashboard.button("SPC l g", devicons.get_icon("git", "git") .. "  LazyGit", ":LazyGit <CR>"),
         dashboard.button(
           "SPC f h",
@@ -175,6 +175,7 @@ return {
           ":Telescope oldfiles <CR>"
         ),
         dashboard.button("SPC f g", devicons.get_icon("search", "md") .. "  Find word", ":Telescope live_grep <CR>"),
+        dashboard.button("SPC L", "󰐱  LeetCode", ":LeetCode <CR>"),
         dashboard.button(
           "c",
           devicons.get_icon("nvim", "lua") .. "  Configuration",
@@ -182,7 +183,6 @@ return {
         ),
         dashboard.button("q", "󰗼  Quit Neovim", ":qa<CR>"),
       }
-
       dashboard.config.opts.noautocmd = true
       vim.cmd [[autocmd User AlphaReady echo 'ready']]
       alpha.setup(dashboard.config)

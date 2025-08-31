@@ -19,4 +19,8 @@ end)
 --space f g for live grep
 map("n", "<leader>fg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>")
 
-vim.keymap.set('n', '<space>q', function() vim.diagnostic.open_float({ border = "rounded" }) end, { desc = 'Show LSP error' })
+map('n', '<space>q', function() vim.diagnostic.open_float({ border = "rounded" }) end, { desc = 'Show LSP error' })
+
+map("n", "<leader>ll", ":Leet<CR>")
+map("n", "<leader>lr", ":Leet run<CR>")
+map("n", "<leader>ls", ":Leet submit<CR>")
