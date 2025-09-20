@@ -21,6 +21,4 @@ map("n", "<leader>fg", ":lua require('telescope').extensions.live_grep_args.live
 
 map('n', '<space>q', function() vim.diagnostic.open_float({ border = "rounded" }) end, { desc = 'Show LSP error' })
 
-map("n", "<space>ll", ":Leet<CR>")
-map("n", "<space>lr", ":Leet run<CR>")
-map("n", "<space>ls", ":Leet submit<CR>")
+vim.keymap.set("n", "-", ":Oil --float <CR>", { desc = "Open parent directory" })

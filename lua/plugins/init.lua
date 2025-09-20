@@ -179,7 +179,6 @@ return {
           ":Telescope oldfiles <CR>"
         ),
         dashboard.button("SPC f g", devicons.get_icon("search", "md") .. "  Find word", ":Telescope live_grep <CR>"),
-        dashboard.button("SPC l l", "󰐱  LeetCode", ":Leet<CR>"),
         dashboard.button(
           "c",
           devicons.get_icon("nvim", "lua") .. "  Configuration",
