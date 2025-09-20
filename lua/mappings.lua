@@ -21,6 +21,6 @@ map("n", "<leader>fg", ":lua require('telescope').extensions.live_grep_args.live
 
 map('n', '<space>q', function() vim.diagnostic.open_float({ border = "rounded" }) end, { desc = 'Show LSP error' })
 
-map("n", "<leader>ll", ":Leet<CR>")
-map("n", "<leader>lr", ":Leet run<CR>")
-map("n", "<leader>ls", ":Leet submit<CR>")
+map("n", "<space>ll", ":Leet<CR>")
+map("n", "<space>lr", ":Leet run<CR>")
+map("n", "<space>ls", ":Leet submit<CR>")

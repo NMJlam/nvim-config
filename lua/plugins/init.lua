@@ -1,5 +1,26 @@
 return {
   {
+    "stevearc/oil.nvim",
+    ---@module 'oil'
+    ---@type oil.SetupOpts
+    opts = {},
+    -- Optional dependencies
+    dependencies = { { "echasnovski/mini.icons", opts = {} } },
+    -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
+    -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
+    lazy = false,
+  },
+  {
+    "kylechui/nvim-surround",
+    version = "^3.0.0", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    config = function()
+      require("nvim-surround").setup {
+        -- Configuration here, or leave empty to use defaults
+      }
+    end,
+  },
+  {
     "folke/flash.nvim",
     event = "VeryLazy",
     ---@type Flash.Config
@@ -61,23 +82,6 @@ return {
   },
   -- test new blink
   { import = "nvchad.blink.lazyspec" },
-  -- Leetcode plugin
-  {
-    "kawre/leetcode.nvim",
-    build = ":TSUpdate html", -- if you have `nvim-treesitter` installed
-    dependencies = {
-      "nvim-telescope/telescope.nvim",
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
-      "nvim-tree/nvim-web-devicons",
-      "nvim-treesitter/nvim-treesitter",
-    },
-    opts = {
-      -- configuration goes here
-      lang = "python3",
-    },
-    lazy = false,
-  },
   -- Best Markdown Preview Plugin
   {
     "ellisonleao/glow.nvim",
@@ -175,7 +179,7 @@ return {
           ":Telescope oldfiles <CR>"
         ),
         dashboard.button("SPC f g", devicons.get_icon("search", "md") .. "  Find word", ":Telescope live_grep <CR>"),
-        dashboard.button("SPC L", "󰐱  LeetCode", ":LeetCode <CR>"),
+        dashboard.button("SPC l l", "󰐱  LeetCode", ":Leet<CR>"),
         dashboard.button(
           "c",
           devicons.get_icon("nvim", "lua") .. "  Configuration",
