@@ -1,8 +1,7 @@
 return {
+  { "akinsho/git-conflict.nvim", version = "*", config = true },
   {
     "stevearc/oil.nvim",
-    ---@module 'oil'
-    ---@type oil.SetupOpts
     opts = {},
     -- Optional dependencies
     dependencies = { { "echasnovski/mini.icons", opts = {} } },
@@ -23,7 +22,6 @@ return {
   {
     "folke/flash.nvim",
     event = "VeryLazy",
-    ---@type Flash.Config
     opts = {},
     -- stylua: ignore
     keys = {
@@ -112,6 +110,17 @@ return {
         "vimdoc",
         "html",
         "css",
+        "javascript", -- Add this for JS support
+        "typescript",
+        "tsx",
+        "json", -- Useful for config files
+        "markdown", -- For documentation
+        "go",
+        "python",
+      },
+      auto_install = true, -- Automatically install missing parsers
+      indent = {
+        enable = true,
       },
     },
   },
