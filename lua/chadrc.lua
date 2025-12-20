@@ -4,14 +4,19 @@
 
 ---@type ChadrcConfig
 local M = {}
+local ascii = require("ascii")
 
 M.base46 = {
-	theme = "onedark",
+	theme = "catppuccin",
+  transparency = true,
+}
 
-	-- hl_override = {
-	-- 	Comment = { italic = true },
-	-- 	["@comment"] = { italic = true },
-	-- },
+-- nv dash greeter
+M.nvdash = { load_on_startup = true,
+              header = ascii.art.text.neovim.sharp
+}
+M.ui = {
+   telescope = { style = "bordered" }, -- borderless / bordered
 }
 
 -- M.nvdash = { load_on_startup = true }
