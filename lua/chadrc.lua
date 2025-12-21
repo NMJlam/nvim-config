@@ -12,9 +12,11 @@ M.base46 = {
 }
 
 -- nv dash greeter
-M.nvdash = { load_on_startup = true,
-              header = ascii.art.text.neovim.sharp
+M.nvdash = {
+  load_on_startup = true,
+  header = ascii.art.text.neovim.sharp,
 }
+
 M.ui = {
    telescope = { style = "bordered" }, -- borderless / bordered
 }
