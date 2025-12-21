@@ -20,6 +20,7 @@ return {
   },
   {
     "MaximilianLloyd/ascii.nvim",
+    lazy = false,
     dependencies = {
       "MunifTanjim/nui.nvim",
     },
@@ -82,7 +83,7 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function()
-      require = "configs.lspconfig"
+      require("configs.lspconfig")
     end,
   }
 }

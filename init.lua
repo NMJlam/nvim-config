@@ -31,6 +31,15 @@ dofile(vim.g.base46_cache .. "statusline")
 
 require("oil").setup()
 
+-- Set nvdash header after plugins load
+vim.api.nvim_create_autocmd("User", {
+  pattern = "LazyDone",
+  callback = function()
+    local chadrc = require("chadrc")
+    chadrc.nvdash.header = require("ascii").art.text.neovim.sharp
+  end,
+})
+
 require "options"
 require "autocmds"
 
