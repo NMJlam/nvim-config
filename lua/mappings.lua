@@ -16,3 +16,6 @@ map("n", "<leader>fg", ":lua require('telescope').extensions.live_grep_args.live
 -- live grep
 map("n", "<C-p>", builtin.git_files, { desc = "Fuzzy Finder for git files" })
 
+-- Diagnostic
+map("n", "<leader>q", vim.diagnostic.open_float, { desc = "Open diagnostic float" })
+
