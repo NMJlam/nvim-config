@@ -2,21 +2,21 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     dependencies = {
-      { 
-          "nvim-telescope/telescope-live-grep-args.nvim" ,
-          -- This will not install any breaking changes.
-          -- For major updates, this must be adjusted manually.
-          version = "^1.0.0",
+      {
+        "nvim-telescope/telescope-live-grep-args.nvim",
+        -- This will not install any breaking changes.
+        -- For major updates, this must be adjusted manually.
+        version = "^1.0.0",
       },
     },
     opts = function()
-      return require("custom.telescope_config")
+      return require "custom.telescope_config"
     end,
     config = function(_, opts)
-      local telescope = require("telescope")
+      local telescope = require "telescope"
       telescope.setup(opts)
-      telescope.load_extension("live_grep_args")
-    end
+      telescope.load_extension "live_grep_args"
+    end,
   },
   {
     "MaximilianLloyd/ascii.nvim",
@@ -28,15 +28,9 @@ return {
   {
     "sphamba/smear-cursor.nvim",
     event = "VeryLazy",
-    opts = { -- Default  Range
-      stiffness = 0.8, -- 0.6      [0, 1]
-      trailing_stiffness = 0.3, -- 0.4      [0, 1]
-      stiffness_insert_mode = 0.7, -- 0.5      [0, 1]
-      trailing_stiffness_insert_mode = 0.7, -- 0.5      [0, 1]
-      damping = 0.8, -- 0.65     [0, 1]
-      damping_insert_mode = 0.8, -- 0.7      [0, 1]
-      distance_stop_animating = 0.5, -- 0.1      > 0
-    },
+    opts = function()
+      require "custom.smear_config"
+    end,
   },
   {
     "kdheepak/lazygit.nvim",
@@ -55,7 +49,7 @@ return {
   },
   {
     "stevearc/conform.nvim",
-    event = 'BufWritePre', -- uncomment for format on save
+    event = "BufWritePre", -- uncomment for format on save
     opts = require "configs.conform",
   },
   -- test new blink
@@ -67,18 +61,15 @@ return {
   },
 
   {
-  	"nvim-treesitter/nvim-treesitter",
-  	opts = {
-  		ensure_installed = {
-  			"vim", "lua", "vimdoc",
-       "html", "css"
-  		},
-  	},
+    "nvim-treesitter/nvim-treesitter",
+    opts = function()
+      return require "custom.treesitter_config"
+    end,
   },
   {
     "neovim/nvim-lspconfig",
     config = function()
-      require("configs.lspconfig")
+      require "configs.lspconfig"
     end,
-  }
+  },
 }
