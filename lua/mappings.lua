@@ -19,3 +19,5 @@ map("n", "<C-p>", builtin.git_files, { desc = "Fuzzy Finder for git files" })
 -- Diagnostic
 map("n", "<leader>q", vim.diagnostic.open_float, { desc = "Open diagnostic float" })
 
+-- Lazy git
+map("n", "<leader>lg", "<cmd>LazyGit<cr>", {desc = "LazyGit keybind"})
