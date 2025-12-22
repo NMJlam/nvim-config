@@ -7,7 +7,7 @@ local M = {}
 local ascii = require("ascii")
 
 M.base46 = {
-	theme = "catppuccin",
+	theme = "bearded-arc",
   transparency = true,
 }
 

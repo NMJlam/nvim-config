@@ -10,7 +10,7 @@ return {
       },
     },
     opts = function()
-      return require("configs.telescope_config")
+      return require("custom.telescope_config")
     end,
     config = function(_, opts)
       local telescope = require("telescope")
@@ -51,11 +51,6 @@ return {
     -- optional for floating window border decoration
     dependencies = {
       "nvim-lua/plenary.nvim",
-    },
-    -- setting the keybinding for LazyGit with 'keys' is recommended in
-    -- order to load the plugin when the command is run for the first time
-    keys = {
-      { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
     },
   },
   {
