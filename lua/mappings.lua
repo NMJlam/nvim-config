@@ -1,7 +1,7 @@
 require "nvchad.mappings"
 
 local map = vim.keymap.set
-local builtin = require("telescope.builtin")
+local builtin = require "telescope.builtin"
 
 -- default
 map("n", ";", ":", { desc = "CMD enter command mode" })
@@ -20,4 +20,4 @@ map("n", "<C-p>", builtin.git_files, { desc = "Fuzzy Finder for git files" })
 map("n", "<leader>q", vim.diagnostic.open_float, { desc = "Open diagnostic float" })
 
 -- Lazy git
-map("n", "<leader>lg", "<cmd>LazyGit<cr>", {desc = "LazyGit keybind"})
+map("n", "<leader>lg", "<cmd>LazyGit<cr>", { desc = "LazyGit keybind" })
