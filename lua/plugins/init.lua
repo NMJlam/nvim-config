@@ -1,5 +1,18 @@
 return {
   {
+    "mfussenegger/nvim-dap",
+    dependencies = {
+      "rcarriga/nvim-dap-ui",
+      "nvim-neotest/nvim-nio",
+      "leoluz/nvim-dap-go",
+      "theHamsta/nvim-dap-virtual-text",
+    },
+    lazy = false,
+    config = function()
+      require "custom.dap_config"
+    end,
+  },
+  {
     "nvim-telescope/telescope.nvim",
     dependencies = {
       {
