@@ -85,4 +85,8 @@ return {
       require "configs.lspconfig"
     end,
   },
+  {
+    "b0o/schemastore.nvim",
+    lazy = true,
+  },
 }
