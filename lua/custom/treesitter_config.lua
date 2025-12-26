@@ -10,5 +10,8 @@ return {
     "gosum",
     "gotmpl",
     "gowork",
+    "json",
+    "yaml",
+    "sql",
   },
 }

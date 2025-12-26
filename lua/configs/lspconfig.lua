@@ -10,3 +10,15 @@ lsp.enable "lua_ls"
 vim.env.PATH = vim.fn.stdpath "data" .. "/mason/bin:" .. vim.env.PATH
 lsp.config.gopls = require "custom.lsp.goLsp"
 lsp.enable "gopls"
+
+-- json lsp
+lsp.config.jsonls = require "custom.lsp.jsonLsp"
+lsp.enable "jsonls"
+
+-- yaml lsp
+lsp.config.yamlls = require "custom.lsp.yamlLsp"
+lsp.enable "yamlls"
+
+-- postgres lsp (using sqls)
+lsp.config.postgres_language_server = require "custom.lsp.postgresLsp"
+lsp.enable "postgres_language_server"
