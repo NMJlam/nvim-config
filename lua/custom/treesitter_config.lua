@@ -13,5 +13,11 @@ return {
     "json",
     "yaml",
     "sql",
+    "svelte",
+  },
+
+  highlight = {
+    enable = true,
+    use_languagetree = true,
   },
 }

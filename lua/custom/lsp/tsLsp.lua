@@ -21,18 +21,6 @@ return {
   end,
   on_init = on_init,
   capabilities = capabilities,
-  cmd = { "gopls" },
-  filetypes = { "go", "gomod", "gotmpl", "gowork" },
-  settings = {
-    gopls = {
-      analyses = {
-        unusedparams = true,
-        unusedWrite = true,
-        nilness = true,
-      },
-      completeUnimported = true,
-      staticcheck = true,
-      semanticTokens = true,
-    },
-  },
+  cmd = { "typescript-language-server", "--stdio" },
+  filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
 }
