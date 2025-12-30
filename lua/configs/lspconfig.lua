@@ -22,3 +22,11 @@ lsp.enable "yamlls"
 -- postgres lsp (using sqls)
 lsp.config.postgres_language_server = require "custom.lsp.postgresLsp"
 lsp.enable "postgres_language_server"
+
+-- typescritp lsp
+lsp.config.typescript_language_server = require "custom.lsp.tsLsp"
+lsp.enable "typescript_language_server"
+
+-- svelte lsp
+lsp.config.svelte = require "custom.lsp.svelteLsp"
+lsp.enable "svelte"

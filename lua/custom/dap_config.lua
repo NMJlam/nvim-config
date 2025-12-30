@@ -31,5 +31,6 @@ require("nvim-dap-virtual-text").setup()
 require("dap-go").setup {
   delve = {
     path = vim.fn.stdpath "data" .. "/mason/bin/dlv",
+    build_flags = { "-gcflags=all=-N -l" },
   },
 }
