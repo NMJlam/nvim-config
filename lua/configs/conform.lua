@@ -10,6 +10,8 @@ local options = {
     typescript = { "prettier" },
     typescriptreact = { "prettier" },
     svelte = { "prettier" },
+    rust = { "rustfmt" },
+    python = { "ruff_format" },
     -- css = { "prettier" },
     -- html = { "prettier" },
   },
