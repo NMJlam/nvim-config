@@ -22,15 +22,29 @@ map("n", "<leader>q", vim.diagnostic.open_float, { desc = "Open diagnostic float
 map("n", "<leader>lg", "<cmd>LazyGit<cr>", { desc = "LazyGit keybind" })
 
 -- Dap
-local dap = require "dap"
-local dapui = require "dapui"
-map("n", "<leader>dc", dap.continue, { desc = "Debug: Continue" })
-map("n", "<leader>db", dap.toggle_breakpoint, { desc = "Debug: Toggle Breakpoint" })
-map("n", "<leader>dB", function()
-  dap.set_breakpoint(vim.fn.input "Breakpoint condition: ")
-end, { desc = "Debug: Conditional Breakpoint" })
-map("n", "<leader>di", dap.step_into, { desc = "Debug: Step Into" })
-map("n", "<leader>do", dap.step_over, { desc = "Debug: Step Over" })
-map("n", "<leader>dO", dap.step_out, { desc = "Debug: Step Out" })
-map("n", "<leader>dr", dap.run_last, { desc = "Debug: Run Last" })
-map("n", "<leader>du", dapui.toggle, { desc = "Debug: Toggle UI" })
+map("n", "<leader>db", function()
+  require("dap").toggle_breakpoint()
+end, { desc = "Add a breakpoint to the line" })
+
+map("n", "<leader>dr", function()
+  require("dap").continue()
+end, { desc = "Continue the debugger" })
+
+map("n", "<leader>dt", function()
+  require("dap").terminate()
+end, { desc = "DAP Terminate" })
+
+map("n", "<leader>du", function()
+  require("dapui").toggle()
+end, { desc = "DAP UI Toggle" })
+
+map("n", "<leader>de", function()
+  require("dapui").eval()
+end, { desc = "DAP Eval expression" })
+
+map("v", "<leader>de", function()
+  require("dapui").eval()
+end, { desc = "DAP Eval selection" })
+
+-- open the terminal
+map("n", "<leader>t", "<cmd>terminal<CR>", { desc = "Open Terminal" })

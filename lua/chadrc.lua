@@ -1,13 +1,13 @@
--- This file needs to have same structure as nvconfig.lua 
+-- This file needs to have same structure as nvconfig.lua
 -- https://github.com/NvChad/ui/blob/v3.0/lua/nvconfig.lua
--- Please read that file to know all available options :( 
+-- Please read that file to know all available options :(
 
 ---@type ChadrcConfig
 local M = {}
-local ascii = require("ascii")
+local ascii = require "ascii"
 
 M.base46 = {
-	theme = "decay",
+  theme = "decay",
   transparency = true,
 }
 
@@ -18,7 +18,15 @@ M.nvdash = {
 }
 
 M.ui = {
-   telescope = { style = "bordered" }, -- borderless / bordered
+  telescope = { style = "bordered" }, -- borderless / bordered
+}
+
+M.mason = {
+  pkgs = {
+    "clang-format",
+    "clangd",
+    "codelldb",
+  },
 }
 
 -- M.nvdash = { load_on_startup = true }

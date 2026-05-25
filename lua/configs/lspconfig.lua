@@ -3,34 +3,9 @@ require("nvchad.configs.lspconfig").defaults()
 local lsp = vim.lsp
 
 -- lua lsp
-lsp.config.lua_ls = require "custom.lsp.luaLsp"
+lsp.config.lua_ls = require "custom.lsp.lua_lsp"
 lsp.enable "lua_ls"
 
--- go lsp
-vim.env.PATH = vim.fn.stdpath "data" .. "/mason/bin:" .. vim.env.PATH
-lsp.config.gopls = require "custom.lsp.goLsp"
-lsp.enable "gopls"
-
--- json lsp
-lsp.config.jsonls = require "custom.lsp.jsonLsp"
-lsp.enable "jsonls"
-
--- yaml lsp
-lsp.config.yamlls = require "custom.lsp.yamlLsp"
-lsp.enable "yamlls"
-
--- postgres lsp (using sqls)
-lsp.config.postgres_language_server = require "custom.lsp.postgresLsp"
-lsp.enable "postgres_language_server"
-
--- svelte lsp
-lsp.config.svelte = require "custom.lsp.svelteLsp"
-lsp.enable "svelte"
-
--- rust lsp
-lsp.config.rust = require "custom.lsp.rustLsp"
-lsp.enable "rust"
-
--- python lsp
-lsp.config.pyright = require "custom.lsp.pythonLsp"
-lsp.enable "pyright"
+-- Cpp lsp
+lsp.config.clangd = require "custom.lsp.cpp_lsp"
+lsp.enable "clangd"

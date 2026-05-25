@@ -1,22 +1,38 @@
 return {
   {
     "mrcjkb/rustaceanvim",
-    version = "^7", -- Recommended
-    lazy = false, -- This plugin is already lazy
-    ft = { "rust" },
+    -- To avoid being surprised by breaking changes,
+    -- I recommend you set a version range
+    version = "^9",
+    -- This plugin implements proper lazy-loading (see :h lua-plugin-lazy).
+    -- No need for lazy.nvim to lazy-load it.
+    lazy = false,
+  },
+  {
+    "pmizio/typescript-tools.nvim",
+    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    ft = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
     config = function()
-      vim.g.rustaceanvim = {
-        dap = {
-          adapter = require("rustaceanvim.config").get_codelldb_adapter(
-            vim.fn.stdpath "data" .. "/mason/bin/codelldb",
-            vim.fn.stdpath "data" .. "/mason/packages/codelldb/extension/lldb/lib/liblldb.dylib"
-          ),
-        },
-      }
+      require("typescript-tools").setup {}
     end,
   },
   {
+    "kawre/leetcode.nvim",
+    cmd = "Leet",
+    build = ":TSUpdate html", -- if you have `nvim-treesitter` installed
+    dependencies = {
+      -- include a picker of your choice, see picker section for more details
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+    },
+    opts = {
+      -- configuration goes here
+      lang = "cpp",
+    },
+  },
+  {
     "folke/todo-comments.nvim",
+    enabled = false,
     dependencies = { "nvim-lua/plenary.nvim" },
     lazy = false,
     config = function()
@@ -24,16 +40,38 @@ return {
     end,
   },
   {
-    "mfussenegger/nvim-dap",
+    "rcarriga/nvim-dap-ui",
+    dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
+  },
+  {
+    "jay-babu/mason-nvim-dap.nvim",
     dependencies = {
-      "rcarriga/nvim-dap-ui",
-      "nvim-neotest/nvim-nio",
-      "leoluz/nvim-dap-go",
-      "theHamsta/nvim-dap-virtual-text",
+      "williamboman/mason.nvim",
+      "mfussenegger/nvim-dap",
     },
-    lazy = false,
+    opts = {
+      handlers = {},
+    },
+  },
+  {
+    "mfussenegger/nvim-dap",
+    dependencies = { "rcarriga/nvim-dap-ui" },
     config = function()
-      require "custom.dap_config"
+      require "custom.dap.cpp_dap"
+      local dap, dapui = require "dap", require "dapui"
+      dapui.setup()
+      dap.listeners.before.attach.dapui_config = function()
+        dapui.open()
+      end
+      dap.listeners.before.launch.dapui_config = function()
+        dapui.open()
+      end
+      dap.listeners.before.event_terminated.dapui_config = function()
+        dapui.close()
+      end
+      dap.listeners.before.event_exited.dapui_config = function()
+        dapui.close()
+      end
     end,
   },
   {
@@ -99,6 +137,7 @@ return {
 
   {
     "nvim-treesitter/nvim-treesitter",
+    branch = "main",
     opts = function()
       return require "custom.treesitter_config"
     end,
@@ -108,17 +147,5 @@ return {
     config = function()
       require "configs.lspconfig"
     end,
-  },
-  {
-    "pmizio/typescript-tools.nvim",
-    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-    ft = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
-    config = function()
-      require "custom.ts_tools_config"
-    end,
-  },
-  {
-    "b0o/schemastore.nvim",
-    lazy = true,
   },
 }
