@@ -198,22 +198,25 @@ return {
       "ClaudeCodeTreeAdd",
     },
     keys = {
-      { "<leader>a", nil, desc = "AI/Claude Code" },
-      { "<leader>ac", "<cmd>ClaudeCode<cr>", desc = "Toggle Claude" },
-      { "<leader>af", "<cmd>ClaudeCodeFocus<cr>", desc = "Focus Claude" },
-      { "<leader>ar", "<cmd>ClaudeCode --resume<cr>", desc = "Resume Claude" },
-      { "<leader>aC", "<cmd>ClaudeCode --continue<cr>", desc = "Continue Claude" },
-      { "<leader>am", "<cmd>ClaudeCodeSelectModel<cr>", desc = "Select Claude model" },
-      { "<leader>ab", "<cmd>ClaudeCodeAdd %<cr>", desc = "Add current buffer" },
-      { "<leader>as", "<cmd>ClaudeCodeSend<cr>", mode = "v", desc = "Send to Claude" },
+      -- desc starts with "claude" so every binding groups under the
+      -- "Claude" header in the <leader>ch cheatsheet. (The <leader>a group
+      -- label lives in mappings.lua's wk.add, so no stray cheatsheet card
+      -- leaks from a nil-rhs label here.)
+      { "<leader>ac", "<cmd>ClaudeCode<cr>", desc = "claude toggle" },
+      { "<leader>af", "<cmd>ClaudeCodeFocus<cr>", desc = "claude focus" },
+      { "<leader>ar", "<cmd>ClaudeCode --resume<cr>", desc = "claude resume" },
+      { "<leader>aC", "<cmd>ClaudeCode --continue<cr>", desc = "claude continue" },
+      { "<leader>am", "<cmd>ClaudeCodeSelectModel<cr>", desc = "claude select model" },
+      { "<leader>ab", "<cmd>ClaudeCodeAdd %<cr>", desc = "claude add current buffer" },
+      { "<leader>as", "<cmd>ClaudeCodeSend<cr>", mode = "v", desc = "claude send selection" },
       {
         "<leader>as",
         "<cmd>ClaudeCodeTreeAdd<cr>",
-        desc = "Add file",
+        desc = "claude add file",
         ft = { "oil", "NvimTree", "neo-tree", "minifiles", "netrw" },
       },
-      { "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "Accept diff" },
-      { "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>", desc = "Deny diff" },
+      { "<leader>aa", "<cmd>ClaudeCodeDiffAccept<cr>", desc = "claude accept diff" },
+      { "<leader>ad", "<cmd>ClaudeCodeDiffDeny<cr>", desc = "claude deny diff" },
     },
   },
 }
