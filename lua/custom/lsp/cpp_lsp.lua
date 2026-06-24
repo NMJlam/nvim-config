@@ -6,5 +6,11 @@ return {
     client.server_capabilities.signatureHelpProvider = false
     on_attach(client, bufnr)
   end,
+  cmd = {
+    "/opt/homebrew/opt/llvm/bin/clangd",
+    "--header-insertion=iwyu", -- Enables "Include What You Use" for auto-imports
+    "--completion-style=detailed",
+    "--fallback-style=LLVM",
+  },
   capabilities = capabilities,
 }

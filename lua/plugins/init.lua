@@ -1,5 +1,8 @@
 return {
   {
+    { "lcian/flowistry.nvim", ft = "rust", opts = {} },
+  },
+  {
     "mrcjkb/rustaceanvim",
     -- To avoid being surprised by breaking changes,
     -- I recommend you set a version range
@@ -32,7 +35,6 @@ return {
   },
   {
     "folke/todo-comments.nvim",
-    enabled = false,
     dependencies = { "nvim-lua/plenary.nvim" },
     lazy = false,
     config = function()
@@ -75,6 +77,21 @@ return {
     end,
   },
   {
+    "Civitasv/cmake-tools.nvim",
+    ft = { "c", "cpp", "cmake" },
+    dependencies = { "mfussenegger/nvim-dap" },
+    opts = {
+      cmake_build_directory = "build",
+      -- "lldb" reuses the adapter defined in custom.dap.cpp_dap.
+      -- runInTerminal=false: the CommandLineTools lldb-dap times out on the
+      -- integrated-terminal handoff. Program I/O goes to the dap console instead.
+      cmake_dap_configuration = {
+        type = "lldb",
+        runInTerminal = false,
+      },
+    },
+  },
+  {
     "nvim-telescope/telescope.nvim",
     dependencies = {
       {
@@ -106,6 +123,25 @@ return {
     opts = function()
       require "custom.smear_config"
     end,
+  },
+  {
+    "sindrets/diffview.nvim",
+    cmd = {
+      "DiffviewOpen",
+      "DiffviewClose",
+      "DiffviewToggleFiles",
+      "DiffviewFocusFiles",
+      "DiffviewFileHistory",
+      "DiffviewRefresh",
+    },
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = {
+      enhanced_diff_hl = true,
+      view = {
+        -- Use a 3-way mixed layout for merge conflicts (default is diff3_horizontal).
+        merge_tool = { layout = "diff3_mixed" },
+      },
+    },
   },
   {
     "kdheepak/lazygit.nvim",

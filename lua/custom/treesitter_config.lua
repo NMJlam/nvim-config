@@ -15,6 +15,7 @@ return {
     "sql",
     "svelte",
     "rust",
+    "python",
   },
 
   highlight = {

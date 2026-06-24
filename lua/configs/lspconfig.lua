@@ -9,3 +9,11 @@ lsp.enable "lua_ls"
 -- Cpp lsp
 lsp.config.clangd = require "custom.lsp.cpp_lsp"
 lsp.enable "clangd"
+
+-- CMake lsp
+lsp.config.neocmakelsp = require "custom.lsp.cmake_lsp"
+lsp.enable "neocmakelsp"
+
+-- Python lsp
+lsp.config.pyright = require "custom.lsp.python_lsp"
+lsp.enable "pyright"
