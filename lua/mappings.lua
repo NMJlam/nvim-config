@@ -19,6 +19,7 @@ if ok then
     { "<leader>f", group = "Telescope" },
     { "<leader>g", group = "Diffview" },
     { "<leader>d", group = "Dap" },
+    { "<leader>m", group = "Markview" },
   }
 end
 
@@ -54,6 +55,10 @@ map("n", "<C-p>", builtin.git_files, { desc = "telescope find git files" })
 map("n", "<leader>fg", function()
   require("telescope").extensions.live_grep_args.live_grep_args()
 end, { desc = "telescope live grep" })
+
+-- ── markview ──────────────────────────────────────────────────
+map("n", "<leader>mt", "<cmd>Markview Toggle<cr>", { desc = "markview toggle preview" })
+map("n", "<leader>ms", "<cmd>Markview splitToggle<cr>", { desc = "markview toggle splitview" })
 
 -- ── diagnostic ────────────────────────────────────────────────
 map("n", "<leader>q", vim.diagnostic.open_float, { desc = "diagnostic open float" })

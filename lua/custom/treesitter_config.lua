@@ -16,6 +16,9 @@ return {
     "svelte",
     "rust",
     "python",
+    -- markview.nvim previewing
+    "markdown",
+    "markdown_inline",
   },
 
   highlight = {

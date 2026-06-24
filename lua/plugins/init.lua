@@ -185,6 +185,17 @@ return {
     end,
   },
   {
+    "OXY2DEV/markview.nvim",
+    -- Do NOT lazy-load: the plugin is already lazy internally, and deferring it
+    -- only slows the first preview. It also needs to load after the colorscheme
+    -- (init.lua applies base46 before plugins) so its dynamic highlight groups
+    -- pick up the right colors.
+    lazy = false,
+    -- blink.cmp comes from nvchad.blink.lazyspec; it powers the callout/checkbox
+    -- completions inside markdown buffers.
+    dependencies = { "saghen/blink.cmp" },
+  },
+  {
     "coder/claudecode.nvim",
     -- No opts: every available setting matches the plugin's defaults, and the
     -- "auto" terminal provider falls back to a native split (no snacks.nvim needed).
