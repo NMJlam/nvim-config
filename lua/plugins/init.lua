@@ -16,7 +16,7 @@ return {
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
     ft = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
     config = function()
-      require("typescript-tools").setup {}
+      require "custom.ts_tools_config"
     end,
   },
   {
@@ -174,8 +174,12 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     branch = "main",
-    opts = function()
-      return require "custom.treesitter_config"
+    -- Load at startup so the FileType highlight autocmd is registered before any
+    -- buffer opens, and parsers install on first run.
+    lazy = false,
+    build = ":TSUpdate",
+    config = function()
+      require "custom.treesitter_config"
     end,
   },
   {
