@@ -23,8 +23,14 @@ M.ui = {
 
 M.mason = {
   pkgs = {
-    "clang-format",
+    -- LSP servers (must match the servers enabled in configs/lspconfig.lua)
     "clangd",
+    "lua-language-server",
+    "neocmakelsp",
+    "pyright",
+    "rust-analyzer",
+    -- formatters / debuggers
+    "clang-format",
     "codelldb",
   },
 }
