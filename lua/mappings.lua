@@ -16,10 +16,9 @@ local ok, wk = pcall(require, "which-key")
 if ok then
   wk.add {
     { "<leader>a", group = "Claude" },
+    { "<leader>c", group = "CompetiTest" },
     { "<leader>f", group = "Telescope" },
     { "<leader>g", group = "Diffview" },
-    { "<leader>d", group = "Dap" },
-    { "<leader>m", group = "Markview" },
   }
 end
 
@@ -56,10 +55,6 @@ map("n", "<leader>fg", function()
   require("telescope").extensions.live_grep_args.live_grep_args()
 end, { desc = "telescope live grep" })
 
--- ── markview ──────────────────────────────────────────────────
-map("n", "<leader>mt", "<cmd>Markview Toggle<cr>", { desc = "markview toggle preview" })
-map("n", "<leader>ms", "<cmd>Markview splitToggle<cr>", { desc = "markview toggle splitview" })
-
 -- ── diagnostic ────────────────────────────────────────────────
 map("n", "<leader>q", vim.diagnostic.open_float, { desc = "diagnostic open float" })
 
@@ -72,40 +67,16 @@ map("n", "<leader>gc", "<cmd>DiffviewClose<cr>", { desc = "diffview close" })
 map("n", "<leader>gh", "<cmd>DiffviewFileHistory<cr>", { desc = "diffview branch history" })
 map("n", "<leader>gf", "<cmd>DiffviewFileHistory %<cr>", { desc = "diffview file history" })
 
--- ── dap ───────────────────────────────────────────────────────
-map("n", "<leader>db", function()
-  require("dap").toggle_breakpoint()
-end, { desc = "dap toggle breakpoint" })
-
-map("n", "<leader>dr", function()
-  require("dap").continue()
-end, { desc = "dap continue / start" })
-
-map("n", "<leader>dt", function()
-  require("dap").terminate()
-end, { desc = "dap terminate" })
-
-map("n", "<leader>do", function()
-  require("dap").step_over()
-end, { desc = "dap step over" })
-
-map("n", "<leader>di", function()
-  require("dap").step_into()
-end, { desc = "dap step into" })
-
-map("n", "<leader>dO", function()
-  require("dap").step_out()
-end, { desc = "dap step out" })
-
--- ── dap (dap-ui lives under the same "dap" header) ────────────
-map("n", "<leader>du", function()
-  require("dapui").toggle()
-end, { desc = "dap toggle ui" })
-
-map("n", "<leader>de", function()
-  require("dapui").eval()
-end, { desc = "dap eval expression" })
-
-map("v", "<leader>de", function()
-  require("dapui").eval()
-end, { desc = "dap eval selection" })
+-- ── competitest ───────────────────────────────────────────────
+map("n", "<leader>cp", function()
+  require("competitest.commands").receive "problem"
+end, { desc = "competitest receive problem" })
+map("n", "<leader>cc", function()
+  require("competitest.commands").receive "contest"
+end, { desc = "competitest receive contest" })
+map("n", "<leader>ct", function()
+  require("competitest.commands").receive "testcases"
+end, { desc = "competitest receive testcases" })
+map("n", "<leader>cr", function()
+  require("competitest.commands").run_testcases(nil, true, false)
+end, { desc = "competitest run testcases" })

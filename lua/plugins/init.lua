@@ -1,37 +1,24 @@
 return {
   {
-    { "lcian/flowistry.nvim", ft = "rust", opts = {} },
-  },
-  {
-    "mrcjkb/rustaceanvim",
-    -- To avoid being surprised by breaking changes,
-    -- I recommend you set a version range
-    version = "^9",
-    -- This plugin implements proper lazy-loading (see :h lua-plugin-lazy).
-    -- No need for lazy.nvim to lazy-load it.
-    lazy = false,
-  },
-  {
-    "pmizio/typescript-tools.nvim",
-    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-    ft = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
+    "xeluxee/competitest.nvim",
+    dependencies = "MunifTanjim/nui.nvim",
     config = function()
-      require "custom.ts_tools_config"
+      require("competitest").setup {
+        template_file = { cpp = vim.fn.stdpath "config" .. "/templates/template.cpp" },
+        evaluate_template_modifiers = true,
+      }
     end,
   },
   {
-    "kawre/leetcode.nvim",
-    cmd = "Leet",
-    build = ":TSUpdate html", -- if you have `nvim-treesitter` installed
+    "0xKitsune/pr.nvim",
+    -- or use a local path:
+    -- dir = "~/path/to/pr.nvim",
     dependencies = {
-      -- include a picker of your choice, see picker section for more details
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
+      "nvim-telescope/telescope.nvim", -- optional
     },
-    opts = {
-      -- configuration goes here
-      lang = "cpp",
-    },
+    config = function()
+      require("pr").setup()
+    end,
   },
   {
     "folke/todo-comments.nvim",
@@ -40,56 +27,6 @@ return {
     config = function()
       require("todo-comments").setup()
     end,
-  },
-  {
-    "rcarriga/nvim-dap-ui",
-    dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" },
-  },
-  {
-    "jay-babu/mason-nvim-dap.nvim",
-    dependencies = {
-      "williamboman/mason.nvim",
-      "mfussenegger/nvim-dap",
-    },
-    opts = {
-      handlers = {},
-    },
-  },
-  {
-    "mfussenegger/nvim-dap",
-    dependencies = { "rcarriga/nvim-dap-ui" },
-    config = function()
-      require "custom.dap.cpp_dap"
-      local dap, dapui = require "dap", require "dapui"
-      dapui.setup()
-      dap.listeners.before.attach.dapui_config = function()
-        dapui.open()
-      end
-      dap.listeners.before.launch.dapui_config = function()
-        dapui.open()
-      end
-      dap.listeners.before.event_terminated.dapui_config = function()
-        dapui.close()
-      end
-      dap.listeners.before.event_exited.dapui_config = function()
-        dapui.close()
-      end
-    end,
-  },
-  {
-    "Civitasv/cmake-tools.nvim",
-    ft = { "c", "cpp", "cmake" },
-    dependencies = { "mfussenegger/nvim-dap" },
-    opts = {
-      cmake_build_directory = "build",
-      -- "lldb" reuses the adapter defined in custom.dap.cpp_dap.
-      -- runInTerminal=false: the CommandLineTools lldb-dap times out on the
-      -- integrated-terminal handoff. Program I/O goes to the dap console instead.
-      cmake_dap_configuration = {
-        type = "lldb",
-        runInTerminal = false,
-      },
-    },
   },
   {
     "nvim-telescope/telescope.nvim",
@@ -187,17 +124,6 @@ return {
     config = function()
       require "configs.lspconfig"
     end,
-  },
-  {
-    "OXY2DEV/markview.nvim",
-    -- Do NOT lazy-load: the plugin is already lazy internally, and deferring it
-    -- only slows the first preview. It also needs to load after the colorscheme
-    -- (init.lua applies base46 before plugins) so its dynamic highlight groups
-    -- pick up the right colors.
-    lazy = false,
-    -- blink.cmp comes from nvchad.blink.lazyspec; it powers the callout/checkbox
-    -- completions inside markdown buffers.
-    dependencies = { "saghen/blink.cmp" },
   },
   {
     "coder/claudecode.nvim",

@@ -9,14 +9,8 @@ local options = {
     rust = { "rustfmt" },
     python = { "ruff_format" },
     cpp = { "clang-format" },
-    -- css = { "prettier" },
-    -- html = { "prettier" },
-  },
-
-  formatters = {
-    sql_formatter = {
-      prepend_args = { "-l", "postgresql" },
-    },
+    css = { "prettier" },
+    html = { "prettier" },
   },
 
   format_on_save = {

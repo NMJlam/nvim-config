@@ -26,7 +26,6 @@ local ensure_installed = {
   "javascript",
   "typescript",
   "tsx",
-  -- markview.nvim previewing
   "markdown",
   "markdown_inline",
 }

@@ -28,10 +28,8 @@ M.mason = {
     "lua-language-server",
     "neocmakelsp",
     "pyright",
-    "rust-analyzer",
-    -- formatters / debuggers
+    -- formatters
     "clang-format",
-    "codelldb",
   },
 }
 
