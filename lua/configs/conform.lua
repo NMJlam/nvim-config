@@ -11,6 +11,7 @@ local options = {
     cpp = { "clang-format" },
     css = { "prettier" },
     html = { "prettier" },
+    nix = { "nixfmt" },
   },
 
   format_on_save = {

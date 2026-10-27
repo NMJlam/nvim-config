@@ -17,3 +17,7 @@ lsp.enable "neocmakelsp"
 -- Python lsp
 lsp.config.pyright = require "custom.lsp.python_lsp"
 lsp.enable "pyright"
+
+-- Nix lsp
+lsp.config.nixd = require "custom.lsp.nix_lsp"
+lsp.enable "nixd"

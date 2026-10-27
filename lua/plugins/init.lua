@@ -6,6 +6,15 @@ return {
       require("competitest").setup {
         template_file = { cpp = vim.fn.stdpath "config" .. "/templates/template.cpp" },
         evaluate_template_modifiers = true,
+        -- macOS: /usr/bin/g++ is Apple clang, whose <bits/stdc++.h> lacks
+        -- <iostream> (no std::cin/cout). Use Homebrew GNU g++ so the
+        -- competitive-programming template compiles.
+        -- Keep -std=gnu++20 in sync with clangd's config
+        -- (~/Library/Preferences/clangd/config.yaml) so the LSP and the
+        -- compiler always agree on the language level.
+        compile_command = {
+          cpp = { exec = "g++-16", args = { "-std=gnu++20", "-Wall", "$(FNAME)", "-o", "$(FNOEXT)" } },
+        },
       }
     end,
   },
